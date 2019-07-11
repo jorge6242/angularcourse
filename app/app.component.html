@@ -1,0 +1,29 @@
+<div class="app">
+  <button (click)="handleClick(username.value)">Get value</button>
+  <input 
+    type="text"
+    #username
+    [value]="inputValue"
+    (input)="handleChange($event.target.value)"
+  >
+  <div class="app">
+    <h3>Airline Passengers</h3>
+    <ul>
+      <li *ngFor="let item of passengers; let i=index">
+        <span 
+          class="status"
+          [ngClass]="{ 'checked-in' : item.checkedIn, 'checked-out' : !item.checkedIn }"
+        >
+        </span>
+        {{ i }}: {{ item.fullname }}
+      </li>
+    </ul>
+  </div>
+  <template [ngIf]="inputValue.length">
+    <div>
+      seearch for ... {{ inputValue }}
+    </div>
+  </template>
+  
+
+</div>
